@@ -1,7 +1,5 @@
 from django.db import models
 
-# Create your models here.
-
 
 class MenuLink(models.Model):
     class Meta:
@@ -11,6 +9,11 @@ class MenuLink(models.Model):
     text = models.CharField(max_length=50)  # type: ignore
     url_or_path = models.CharField(max_length=2048)  # type: ignore
     new_tab = models.BooleanField(default=False)  # type: ignore
+
+    site_setup = models.ForeignKey(  # type: ignore
+        'SiteSetup', on_delete=models.CASCADE, blank=True, null=True,
+        default=None
+    )
 
     def __str__(self) -> str:
         return self.text
