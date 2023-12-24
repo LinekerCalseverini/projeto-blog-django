@@ -39,10 +39,12 @@ RUN python -m venv /venv && \
   chmod -R 755 /data/web/media && \
   chmod -R +x /scripts
 
-ENV PATH="/scripts:/venv/bin:"$PATH
+# Adiciona a pasta scripts e venv/bin 
+# no $PATH do container.
+ENV PATH="/scripts:/venv/bin:$PATH"
 
 # Muda o usuário para duser
 USER duser
 
 # Executa o arquivo scripts/commands.sh
-CMD ["/scripts/commands.sh"]
+CMD ["commands.sh"]
