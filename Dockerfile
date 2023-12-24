@@ -39,6 +39,8 @@ RUN python -m venv /venv && \
   chmod -R 755 /data/web/media && \
   chmod -R +x /scripts
 
+ENV PATH="/scripts:/venv/bin:"$PATH
+
 # Muda o usuário para duser
 USER duser
 
