@@ -1,4 +1,7 @@
 {
+  "html.validate.styles": false,
+  "html.validate.scripts": false,
+  "html.trace.server": "off",
   "window.zoomLevel": 0,
   "editor.fontSize": 16,
   "editor.hover.enabled": true,
@@ -53,6 +56,14 @@
   },
   "python.defaultInterpreterPath": "./venv/bin/python",
   "python.analysis.typeCheckingMode": "basic",
-  "cSpell.enabled": true,
+  "djlint.ignore": [
+    "H016",
+    "H030",
+    "H031",
+    "H022",
+    "H006",
+    "H013"
+  ],
+  "cSpell.enabled": true
   // "python.formatting.provider": "none"
 }
