@@ -9,7 +9,6 @@ note: |
 category: file
 */
 
-
 /* @docs
 label: Box Sizing
 
@@ -23,7 +22,6 @@ category: global
 ::after {
   box-sizing: border-box;
 }
-
 
 /* @docs
 label: Line Sizing
@@ -41,7 +39,6 @@ html {
   line-sizing: normal;
 }
 
-
 /* @docs
 label: Body Margins
 
@@ -53,7 +50,6 @@ category: global
 body {
   margin: 0;
 }
-
 
 /* @docs
 label: Hidden Attribute
@@ -67,7 +63,6 @@ note: |
   display: none;
 }
 
-
 /* @docs
 label: Heading Sizes
 
@@ -79,27 +74,21 @@ category: typography
 h1 {
   font-size: 2rem;
 }
-
 h2 {
   font-size: 1.5rem;
 }
-
 h3 {
   font-size: 1.17rem;
 }
-
 h4 {
-  font-size: 1.00rem;
+  font-size: 1rem;
 }
-
 h5 {
   font-size: 0.83rem;
 }
-
 h6 {
   font-size: 0.67rem;
 }
-
 
 /* @docs
 label: H1 Margins
@@ -113,7 +102,6 @@ h1 {
   margin: 0.67em 0;
 }
 
-
 /* @docs
 label: Pre Wrapping
 
@@ -125,7 +113,6 @@ category: typography
 pre {
   white-space: pre-wrap;
 }
-
 
 /* @docs
 label: Horizontal Rule
@@ -144,7 +131,6 @@ hr {
   height: 0;
   overflow: visible;
 }
-
 
 /* @docs
 label: Responsive Embeds
@@ -169,11 +155,9 @@ object {
   vertical-align: middle;
   max-width: 100%;
 }
-
 audio:not([controls]) {
   display: none;
 }
-
 
 /* @docs
 label: Responsive Images
@@ -191,11 +175,9 @@ category: embedded elements
 picture {
   display: contents;
 }
-
 source {
   display: none;
 }
-
 
 /* @docs
 label: Aspect Ratios
@@ -214,7 +196,6 @@ video,
 canvas {
   height: auto;
 }
-
 
 /* @docs
 label: Audio Width
@@ -241,7 +222,6 @@ img {
   border-style: none;
 }
 
-
 /* @docs
 label: SVG Overflow
 
@@ -253,7 +233,6 @@ category: legacy browsers
 svg {
   overflow: hidden;
 }
-
 
 /* @docs
 label: HTML5 Elements
@@ -280,7 +259,6 @@ nav,
 section {
   display: block;
 }
-
 
 /* @docs
 label: Checkbox & Radio Inputs
