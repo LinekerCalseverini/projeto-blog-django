@@ -1,4 +1,17 @@
 {
+  "[django-html]": {
+    "editor.quickSuggestions": {
+      "other": true,
+      "comments": true,
+      "strings": true
+    },
+    "djlint.enableLinting": true,
+    "djlint.profile": "django",
+    "emmet.showAbbreviationSuggestions": true,
+    "editor.snippets.codeActions.enabled": true,
+    "editor.snippetSuggestions": "inline",
+    "editor.suggest.showSnippets": true
+  },
   "html.validate.styles": false,
   "html.validate.scripts": false,
   "html.trace.server": "off",
@@ -64,6 +77,9 @@
     "H006",
     "H013"
   ],
+  "emmet.includeLanguages": {
+    "django-html": "html"
+  },
   "cSpell.enabled": true
   // "python.formatting.provider": "none"
 }
