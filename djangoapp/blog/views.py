@@ -90,51 +90,26 @@ class CategoryListView(PostListView):
         return ctx
 
 
-def category(request, slug):
-    posts = (Post.objects.get_published()  # type: ignore
-             .filter(category__slug=slug))
+class TagListView(PostListView):
+    allow_empty = False
 
-    paginator = Paginator(posts, PER_PAGE)
-    page_number = request.GET.get("page")
-    page_obj = paginator.get_page(page_number)
+    def get_queryset(self) -> QuerySet[Any]:
+        return super().get_queryset().filter(
+            tags__slug=self.kwargs.get('slug')
+        )
 
-    if len(page_obj) == 0:
-        raise Http404()
+    def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
+        ctx = super().get_context_data(**kwargs)
+        category_name = self.object_list[0].tags.filter(  # type:ignore
+            slug=self.kwargs.get('slug')
+        ).first().name
+        page_title = f'{category_name} - Tag - '
 
-    page_title = f'{page_obj[0].category.name} - Categoria - '
+        ctx.update({
+            'page_title': page_title
+        })
 
-    return render(
-        request,
-        'blog/pages/index.html',
-        {
-            'page_obj': page_obj,
-            'page_title': page_title,
-        }
-    )
-
-
-def tag(request, slug):
-    posts = (Post.objects.get_published()  # type: ignore
-             .filter(tags__slug=slug))
-
-    paginator = Paginator(posts, PER_PAGE)
-    page_number = request.GET.get("page")
-    page_obj = paginator.get_page(page_number)
-
-    if len(page_obj) == 0:
-        raise Http404()
-
-    selected_tag = page_obj[0].tags.filter(slug=slug).first().name
-    page_title = f'{selected_tag} - Tag - '
-
-    return render(
-        request,
-        'blog/pages/index.html',
-        {
-            'page_obj': page_obj,
-            'page_title': page_title,
-        }
-    )
+        return ctx
 
 
 def search(request):
