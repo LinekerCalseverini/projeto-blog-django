@@ -1,7 +1,7 @@
 from typing import Any
 from django.core.paginator import Paginator
 from django.db.models.query import QuerySet
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from blog.models import Post, Page
 from django.db.models import Q
 from django.contrib.auth.models import User
@@ -110,6 +110,40 @@ class TagListView(PostListView):
         })
 
         return ctx
+
+
+class SearchListView(PostListView):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self._search_value = ''
+
+    def setup(self, request, *args, **kwargs):
+        self._search_value = request.GET.get('search', '').strip()
+        return super().setup(request, *args, **kwargs)
+
+    def get_queryset(self) -> QuerySet[Any]:
+        search_value = self._search_value
+        return super().get_queryset().filter(
+            Q(title__icontains=search_value) |
+            Q(excerpt__icontains=search_value) |
+            Q(content__icontains=search_value)
+        )
+
+    def get_context_data(self, **kwargs):
+        ctx = super().get_context_data(**kwargs)
+        search_value = self._search_value
+
+        ctx.update({
+            'page_title': f'{search_value[:30]} - Search - ',
+            'search_value': search_value
+        })
+        return ctx
+
+    def get(self, request, *args, **kwargs):
+        if self._search_value == '':
+            return redirect('blog:index')
+
+        return super().get(request, *args, **kwargs)
 
 
 def search(request):
